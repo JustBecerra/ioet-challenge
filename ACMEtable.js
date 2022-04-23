@@ -5,78 +5,112 @@ function ACMEtable(){
       var ASTRID_ANDRES = 0;
       var RENE_ASTRID = 0;
       var ANDRES_RENE = 0;
+      var dayhourA = '';
+      var dayhourB = '';
+      var RENE = []
+      var ASTRID = []
+      var ANDRES = []
       for(let i=0;i < data.length;i++){
 
-        let RENE = ''
-        if(data[i] === 'R'){//identifico que es RENE
+        if(data[i] === 'R' && data[i+2] === 'N'){//identifico que es RENE
           let j = i + 5;
-          
+          let dayhour = ''
+          let hours = []
           while(data[j] !== '}'){//paro de recorrer su horario
-           RENE += data[j]
+           if(data[j] === ','){
+            hours.push(dayhour)
+            dayhour = ''
+            j++
+           }
+           dayhour += data[j]
+           if(data[j+1] === '}'){
+            hours.push(dayhour)
+            dayhour = ''
+           }
            j++;
           }
+          console.log('rene ',hours)
+          RENE.push(hours)
+          hours=[]
         }
         
-        let ASTRID = ''
-        if(data[i] === 'A'){//identifico que es ASTRID
+        
+        if(data[i] === 'A' && data[i+1] === 'S'){//identifico que es ASTRID
           let j = i + 7;
+          let dayhour = ''
+          let hours = []
           while(data[j] !== '}'){//paro de recorrer su horario
-           ASTRID += data[j]
-           j++;
+           if(data[j] === ','){
+            hours.push(dayhour)
+            dayhour = ''
+            j++
+           }
+           dayhour += data[j]
+           if(data[j+1] === '}'){
+            hours.push(dayhour)
+            dayhour = ''
+           }
+           j++
           }
+          console.log('astrid ', hours)
+          ASTRID.push(hours)
+          hours=[]
         }
         
-        let ANDRES = ''
+        
         if(data[i] === 'A' && data[i+1] === 'N'){//identifico que es ANDRES
           let j = i + 7;
-           while(data[j] !== '}'){//paro de recorrer su horario
-            ANDRES += data[j]
-            j++;
-           }
-        }
-
-
-        // console.log(RENE)
-        // console.log(ASTRID)
-        // console.log(ANDRES ? ANDRES : 'Andres didnt come to work')
-        
-        for(var m = 0; m < RENE.length; m++){
           let dayhour = ''
-
-          while(RENE[m] !== ','){
-            dayhour += RENE[m]
-            console.log(dayhour)
+          let hours = []
+          while(data[j] !== '}'){//paro de recorrer su horario
+            if(data[j] === ','){
+              hours.push(dayhour)
+              dayhour = ''
+              j++
+            }
+            dayhour += data[j]
+            if(data[j+1] === '}'){
+              hours.push(dayhour)
+              dayhour = ''
+            }
+            j++;
           }
-          if(ASTRID.contains(dayhour)){
-            RENE_ASTRID++;
-          }
-          if(ANDRES.contains(dayhour)){
-            ANDRES_RENE++;
-          }
-          if(RENE[m] === ','){
-            dayhour=''
-          }
+          console.log('andres ', hours)
+          ANDRES.push(hours)
+          hours = []
         }
+  
+        // for(var m = 0; m < RENE.length; m++){
+        //   if(RENE[m] !== ','){
+        //     dayhourB += RENE[m]
+        //   }else{
+        //     if(ASTRID.includes(dayhourB)){
+        //       RENE_ASTRID++;
+        //     }
+        //     if(ANDRES.includes(dayhourB)){
+        //       ANDRES_RENE++;
+        //     }
+        //     dayhourB=''
+        //   }
+        // }
 
-        for(var n = 0; n < ASTRID.length; n++){
-            let dayhour = '';
+        // for(var n = 0; n < ASTRID.length; n++){
             
-            while(ASTRID[n] !== ','){
-              dayhour += ASTRID[n]
-              console.log(dayhour)
-            }
-            if(ANDRES.contains(dayhour)){
-              ASTRID_ANDRES++;
-            }
-            if(ASTRID[n] === ','){
-              dayhour=''
-            }
-        }
+        //   if(ASTRID[n] !== ','){
+        //     dayhourA += ASTRID[n]
+        //   }else{
+        //     console.log('dayhourA ', dayhourA)
+        //     if(ANDRES.includes(dayhourA)){
+        //       ASTRID_ANDRES++;
+        //     }
+        //     dayhourA=''   
+        //   }
+        // }
 
         // if(data[i] === 'x'){
-        //     RENE = ''
-        //     ASTRID = ''
-        //     ANDRES = ''
+        //   RENE = ''
+        //   ASTRID = ''
+        //   ANDRES = ''
         // }   
     }
     console.log(RENE_ASTRID)
