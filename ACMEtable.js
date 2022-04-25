@@ -10,11 +10,11 @@ function ACMEtable(){
       var ANDRES = []
       for(let i=0;i < data.length;i++){
 
-        if(data[i] === 'R' && data[i+2] === 'N'){//identifico que es RENE
+        if(data[i] === 'R' && data[i+2] === 'N'){//identify RENE
           let j = i + 5;
           let dayhour = ''
           let hours = []
-          while(data[j] !== '}'){//paro de recorrer su horario
+          while(data[j] !== '}'){//stop traversing RENE's hours
            if(data[j] === ','){
             hours.push(dayhour)
             dayhour = ''
@@ -27,17 +27,16 @@ function ACMEtable(){
            }
            j++;
           }
-          // console.log('rene ',hours)
           RENE.push(hours)
           hours=[]
         }
         
         
-        if(data[i] === 'A' && data[i+1] === 'S'){//identifico que es ASTRID
+        if(data[i] === 'A' && data[i+1] === 'S'){//identify ASTRID
           let j = i + 7;
           let dayhour = ''
           let hours = []
-          while(data[j] !== '}'){//paro de recorrer su horario
+          while(data[j] !== '}'){//stop traversing ASTRID's hours
            if(data[j] === ','){
             hours.push(dayhour)
             dayhour = ''
@@ -50,17 +49,16 @@ function ACMEtable(){
            }
            j++
           }
-          // console.log('astrid ', hours)
           ASTRID.push(hours)
           hours=[]
         }
         
         
-        if(data[i] === 'A' && data[i+1] === 'N'){//identifico que es ANDRES
+        if(data[i] === 'A' && data[i+1] === 'N'){//identify ANDRES
           let j = i + 7;
           let dayhour = ''
           let hours = []
-          while(data[j] !== '}'){//paro de recorrer su horario
+          while(data[j] !== '}'){//stop traversing ANDRES's hours
             if(data[j] === ','){
               hours.push(dayhour)
               dayhour = ''
@@ -73,7 +71,6 @@ function ACMEtable(){
             }
             j++;
           }
-          // console.log('andres ', hours)
           ANDRES.push(hours)
           hours = []
         }  
