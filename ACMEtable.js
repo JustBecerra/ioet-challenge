@@ -5,8 +5,6 @@ function ACMEtable(){
       var ASTRID_ANDRES = 0;
       var RENE_ASTRID = 0;
       var ANDRES_RENE = 0;
-      var dayhourA = '';
-      var dayhourB = '';
       var RENE = []
       var ASTRID = []
       var ANDRES = []
@@ -29,7 +27,7 @@ function ACMEtable(){
            }
            j++;
           }
-          console.log('rene ',hours)
+          // console.log('rene ',hours)
           RENE.push(hours)
           hours=[]
         }
@@ -52,7 +50,7 @@ function ACMEtable(){
            }
            j++
           }
-          console.log('astrid ', hours)
+          // console.log('astrid ', hours)
           ASTRID.push(hours)
           hours=[]
         }
@@ -75,47 +73,36 @@ function ACMEtable(){
             }
             j++;
           }
-          console.log('andres ', hours)
+          // console.log('andres ', hours)
           ANDRES.push(hours)
           hours = []
+        }  
+      }
+
+      for(var m = 0; m < RENE.length; m++){
+        for(var n = 0;n < RENE[m].length; n++){
+          if(ASTRID[m].includes(RENE[m][n])){
+            RENE_ASTRID++;
+          }
         }
-  
-        // for(var m = 0; m < RENE.length; m++){
-        //   if(RENE[m] !== ','){
-        //     dayhourB += RENE[m]
-        //   }else{
-        //     if(ASTRID.includes(dayhourB)){
-        //       RENE_ASTRID++;
-        //     }
-        //     if(ANDRES.includes(dayhourB)){
-        //       ANDRES_RENE++;
-        //     }
-        //     dayhourB=''
-        //   }
-        // }
+        console.log('RENE_ASTRID ', RENE_ASTRID)
+        RENE_ASTRID = 0;
+      }
 
-        // for(var n = 0; n < ASTRID.length; n++){
-            
-        //   if(ASTRID[n] !== ','){
-        //     dayhourA += ASTRID[n]
-        //   }else{
-        //     console.log('dayhourA ', dayhourA)
-        //     if(ANDRES.includes(dayhourA)){
-        //       ASTRID_ANDRES++;
-        //     }
-        //     dayhourA=''   
-        //   }
-        // }
-
-        // if(data[i] === 'x'){
-        //   RENE = ''
-        //   ASTRID = ''
-        //   ANDRES = ''
-        // }   
-    }
-    console.log(RENE_ASTRID)
-    console.log(ASTRID_ANDRES)
-    console.log(ANDRES_RENE)
+      for(var p = 0; p < ANDRES.length; p++){
+        for(var q = 0; q < ANDRES[p].length; q++){
+          if(ASTRID[p].includes(ANDRES[p][q])){
+            ASTRID_ANDRES++;
+          }
+          if(RENE[p].includes(ANDRES[p][q])){
+            ANDRES_RENE++;
+          }
+        }
+        console.log('ASTRID_ANDRES ', ASTRID_ANDRES)
+        ASTRID_ANDRES = 0
+        console.log('ANDRES_RENE ', ANDRES_RENE)
+        ANDRES_RENE = 0
+      }
   }) 
 }
 
